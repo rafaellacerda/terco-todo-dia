@@ -23,7 +23,8 @@ export function HomePage() {
         </div>
         <div className="h-0.75 w-14 bg-gold" />
         <p className="max-w-140 text-[15.5px] leading-relaxed text-muted-foreground">
-          Escolha um mistério para começar.
+          Escolha um mistério para começar. A cada oração concluída, o terço
+          avança para a próxima conta.
         </p>
       </div>
 
