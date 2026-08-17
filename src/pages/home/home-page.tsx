@@ -6,6 +6,8 @@ import {
 } from '@/data/rosary/registry'
 import { RosaryIcon } from '@/components/rosary-icon'
 import { MysterySetCard } from '@/pages/home/components/mystery-set-card'
+import { ResumeBanner } from '@/pages/home/components/resume-banner'
+import { YearCalendar } from '@/pages/home/components/year-calendar'
 
 export function HomePage() {
   const suggestedKey = suggestedMarianKeyForToday()
@@ -24,6 +26,9 @@ export function HomePage() {
           Escolha um mistério para começar.
         </p>
       </div>
+
+      <YearCalendar />
+      <ResumeBanner />
 
       <section className="flex flex-col gap-4">
         <h2 className="font-heading text-[22px] font-semibold text-primary">
