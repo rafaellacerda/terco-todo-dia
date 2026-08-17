@@ -54,8 +54,7 @@ export function HomePage() {
             Terço dos Arcanjos
           </h2>
           <span className="text-[13px] text-muted-foreground">
-            A mesma estrutura de dezenas, dedicada a um arcanjo. Comece pelo de
-            São Rafael.
+            A mesma estrutura de dezenas, dedicada a um arcanjo.
           </span>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5">

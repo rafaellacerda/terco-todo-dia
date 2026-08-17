@@ -1,5 +1,4 @@
 import {
-  ARCHANGEL_REFRAIN,
   ARCHANGEL_SETS,
   type TArchangelSetKey,
   DORES_DATA,
@@ -132,7 +131,7 @@ export function buildArchangelSteps(
       dot: 5,
       title: 'Glória',
       subtitle: myst.title,
-      text: `${PRAYERS.gloria}\n\n${ARCHANGEL_REFRAIN}`,
+      text: `${PRAYERS.gloria}\n\n${set.refrain ?? ''}`,
     })
   }
   steps.push({ dot: 5, title: 'Salve Rainha', text: PRAYERS.salveRainha })
@@ -151,28 +150,43 @@ export function buildArchangelSteps(
 }
 
 export function buildBentoSteps(): TStep[] {
-  const crossVerse =
-    'A Cruz Sagrada seja a minha luz, não seja o dragão o meu guia. Retira-te, Satanás! Nunca me aconselhes coisas vãs. É mal o que me ofereces, bebe tu mesmo o teu veneno.'
+  const crossVerses = [
+    'A Cruz Sagrada seja a minha luz.',
+    'Não seja o dragão o meu guia.',
+    'Retira-te, Satanás!',
+    'Nunca me aconselhes coisas vãs.',
+    'É mal o que me ofereces.',
+    'Bebe tu mesmo o teu veneno.',
+  ]
   const steps: TStep[] = []
   steps.push({ dot: 0, title: 'Sinal da Cruz', text: PRAYERS.signCross })
   steps.push({
     dot: 0,
-    title: 'Versículo da Cruz de São Bento',
-    text: crossVerse,
+    title: 'Creio (Símbolo dos Apóstolos)',
+    text: PRAYERS.credo,
   })
-  for (let d = 0; d < 6; d++) {
-    const base = 6 + d * 10
+  steps.push({
+    dot: 1,
+    title: 'Pai Nosso (em honra à Santíssima Trindade)',
+    text: PRAYERS.paternoster,
+  })
+  ;['fé', 'esperança', 'caridade'].forEach((virtue, i) =>
     steps.push({
-      dot: base,
-      title: `${d + 1}ª Dezena — Creio`,
-      text: PRAYERS.credo,
-    })
+      dot: 2 + i,
+      title: `Ave Maria (em honra à ${virtue})`,
+      text: PRAYERS.avemaria,
+    }),
+  )
+  for (let d = 0; d < 6; d++) {
+    const base = 6 + d * 11
+    const verse = crossVerses[d]
     for (let a = 1; a <= 10; a++)
       steps.push({
-        dot: base + a,
-        title: `Versículo (${a}/10)`,
-        text: crossVerse,
+        dot: base + a - 1,
+        title: `${d + 1}ª Dezena — Versículo (${a}/10)`,
+        text: verse,
       })
+    steps.push({ dot: 5, title: 'Glória', text: PRAYERS.gloria })
   }
   steps.push({
     dot: 0,
@@ -421,8 +435,16 @@ export function buildFranciscanaSteps(): TStep[] {
       text: `${PRAYERS.avemaria}\n\n${PRAYERS.gloria}`,
     })
   }
-  steps.push({ dot: 5, title: 'Ave Maria (extra 1ª)', text: PRAYERS.avemaria })
-  steps.push({ dot: 5, title: 'Ave Maria (extra 2ª)', text: PRAYERS.avemaria })
+  steps.push({
+    dot: 5,
+    title: 'Pai Nosso (pelas intenções do Papa)',
+    text: PRAYERS.paternoster,
+  })
+  steps.push({
+    dot: 5,
+    title: 'Ave Maria (pelas intenções do Papa)',
+    text: PRAYERS.avemaria,
+  })
   steps.push({
     dot: 0,
     title: 'Oração Final',
@@ -481,16 +503,28 @@ export function buildJoseSteps(): TStep[] {
   })
   const aspiracao = 'Ave, José, filho de Davi, esposo de Maria, rogai por nós.'
   for (let d = 0; d < 7; d++) {
-    const base = 6 + d * 1
+    const base = 6 + d * 4
     const pair = JOSE_DATA.pairs[d]
     steps.push({
       dot: base,
-      title: `${d + 1}ª Dor e Alegria`,
+      title: `${d + 1}ª Dor e Alegria — Pai Nosso`,
       subtitle: 'São José',
-      text: `Dor: ${pair.dor}\n\nAlegria: ${pair.alegria}\n\nPor esta dor e por esta alegria, São José, alcançai-nos a vossa proteção.`,
+      text: `Dor: ${pair.dor}\n\nAlegria: ${pair.alegria}\n\nPor esta dor e por esta alegria, São José, alcançai-nos a vossa proteção.\n\n— Pai Nosso —\n${PRAYERS.paternoster}`,
     })
     steps.push({
-      dot: 5,
+      dot: base + 1,
+      title: 'Ave Maria',
+      subtitle: 'São José',
+      text: PRAYERS.avemaria,
+    })
+    steps.push({
+      dot: base + 2,
+      title: 'Glória',
+      subtitle: 'São José',
+      text: PRAYERS.gloria,
+    })
+    steps.push({
+      dot: base + 3,
       title: 'Aspiração',
       subtitle: 'São José',
       text: aspiracao,

@@ -111,9 +111,6 @@ export const MYSTERY_SETS = {
 
 export type TMysterySetKey = keyof typeof MYSTERY_SETS
 
-export const ARCHANGEL_REFRAIN =
-  'São Rafael Arcanjo, médico de Deus, rogai por nós.\nNossa Senhora, Rainha dos Anjos, rogai por nós.'
-
 export type TArchangelSet = {
   name: string
   day: string
@@ -121,6 +118,7 @@ export type TArchangelSet = {
   closing?: string
   items?: TMysteryItem[]
   invocations?: string[]
+  refrain?: string
 }
 
 export const ARCHANGEL_SETS = {
@@ -133,33 +131,35 @@ export const ARCHANGEL_SETS = {
       'São Rafael Arcanjo, forte e compassivo, permanecei ao nosso lado em cada etapa da vida. Curai o que precisa ser curado, protegei o que precisa ser guardado e conduzi-nos, como conduzistes Tobias, ao encontro do Senhor. Amém.',
     items: [
       {
-        title: 'O Chamado do Arcanjo',
-        desc: 'Deus envia Rafael para acompanhar Tobias em sua viagem, guardando-o de todo perigo pelo caminho.',
+        title: 'São Rafael, Médico de Deus',
+        desc: 'São Rafael é o médico de Deus, que traz cura para o corpo, a alma e o coração dos que sofrem.',
       },
       {
-        title: 'A Cura de Sara',
-        desc: 'Rafael livra Sara da opressão que a afligia e a une a Tobias em um matrimônio bendito por Deus.',
+        title: 'São Rafael, Arcanjo da Libertação',
+        desc: 'São Rafael liberta os que estão presos pelas amarras do pecado e do mal.',
       },
       {
-        title: 'A Cura de Tobit',
-        desc: 'Seguindo as instruções de Rafael, Tobias devolve a visão a seu pai, cego há muitos anos.',
+        title: 'São Rafael, Fiel Condutor de Tobias',
+        desc: 'Como guiou Tobias em sua longa viagem, São Rafael acompanha e protege os nossos passos na estrada da vida.',
       },
       {
-        title: 'A Revelação do Arcanjo',
-        desc: 'Rafael revela sua verdadeira identidade: um dos anjos que estão sempre diante da gloria do Senhor.',
+        title: 'São Rafael, Auxílio nas Tribulações',
+        desc: 'São Rafael socorre os que atravessam a dor e o sofrimento, trazendo consolo e força.',
       },
       {
-        title: 'Ação de Graças',
-        desc: 'A família de Tobias louva a Deus pela cura e pela proteção recebidas, e Rafael retorna à presença divina.',
+        title: 'São Rafael, Protetor das Famílias',
+        desc: 'São Rafael guarda os lares, fazendo deles santuários de amor e paz.',
       },
     ],
     invocations: [
-      'São Rafael, guia fiel dos que caminham.\nConduzi os nossos passos.',
-      'São Rafael, libertador dos oprimidos.\nLivrai-nos de todo mal.',
       'São Rafael, médico de Deus.\nIntercedei pela cura do nosso coração.',
-      'São Rafael, mensageiro da gloria de Deus.\nFortalecei a nossa fé.',
-      'São Rafael, arcanjo da providência.\nGuardai as nossas famílias.',
+      'São Rafael, arcanjo da libertação.\nVinde nos livrar da escravidão do pecado.',
+      'São Rafael, fiel condutor de Tobias.\nAcompanhai nossos passos na estrada da vida.',
+      'São Rafael, auxílio nas tribulações.\nSocorrei-nos na dor e no sofrimento.',
+      'São Rafael, protetor das famílias.\nFazei de nosso lar um santuário do amor.',
     ],
+    refrain:
+      'São Rafael Arcanjo, médico de Deus, rogai por nós.\nNossa Senhora, Rainha dos Anjos, rogai por nós.',
   },
   gabriel: {
     name: 'São Gabriel Arcanjo',
@@ -197,6 +197,8 @@ export const ARCHANGEL_SETS = {
       'São Gabriel, portador de boas novas.\nEnchei nossos corações de esperança.',
       'São Gabriel, intérprete das visões de Deus.\nDai-nos discernimento e clareza.',
     ],
+    refrain:
+      'São Gabriel Arcanjo, mensageiro do Altíssimo, rogai por nós.\nNossa Senhora, Rainha dos Anjos, rogai por nós.',
   },
   miguel: {
     name: 'São Miguel Arcanjo',
