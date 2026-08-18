@@ -39,7 +39,7 @@ export function useSpeechSynthesis() {
     setIsSpeaking(false)
   }, [])
 
-  const speak = useCallback((text: string) => {
+  const speak = useCallback((text: string, onEnd?: () => void) => {
     if (!isSupported) return
     window.speechSynthesis.cancel()
     const utterance = new SpeechSynthesisUtterance(text)
@@ -47,7 +47,10 @@ export function useSpeechSynthesis() {
     if (voice) utterance.voice = voice
     utterance.lang = 'pt-BR'
     utterance.rate = 0.95
-    utterance.onend = () => setIsSpeaking(false)
+    utterance.onend = () => {
+      setIsSpeaking(false)
+      onEnd?.()
+    }
     utterance.onerror = () => setIsSpeaking(false)
     window.speechSynthesis.speak(utterance)
     setIsSpeaking(true)

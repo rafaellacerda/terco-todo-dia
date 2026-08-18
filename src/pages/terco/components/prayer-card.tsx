@@ -40,7 +40,9 @@ export function PrayerCard({
             size="icon"
             className="shrink-0 rounded-full"
             aria-label={isSpeaking ? 'Parar leitura' : 'Ouvir oração'}
-            onClick={() => (isSpeaking ? stop() : speak(step.text))}
+            onClick={() =>
+              isSpeaking ? stop() : speak(step.text, onComplete)
+            }
           >
             {isSpeaking ? <Pause /> : <Play />}
           </Button>
