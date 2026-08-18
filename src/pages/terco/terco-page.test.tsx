@@ -29,7 +29,7 @@ describe('TercoPage', () => {
     expect(
       screen.queryByRole('button', { name: 'Voltar' }),
     ).not.toBeInTheDocument()
-    expect(screen.getByText('Passo 1 de 73')).toBeInTheDocument()
+    expect(screen.getByText('Passo 1 de 74')).toBeInTheDocument()
   })
 
   it('advances to the next step and saves progress when Concluir is clicked', async () => {

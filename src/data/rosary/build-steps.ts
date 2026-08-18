@@ -76,6 +76,11 @@ export function buildMarianSteps(
       })
     }
   }
+  steps.push({
+    dot: 5,
+    title: 'Agradecimento a Nossa Senhora',
+    text: PRAYERS.agradecimentoRainha,
+  })
   steps.push({ dot: 5, title: 'Salve Rainha', text: PRAYERS.salveRainha })
   steps.push({
     dot: 0,
@@ -134,6 +139,11 @@ export function buildArchangelSteps(
       text: `${PRAYERS.gloria}\n\n${set.refrain ?? ''}`,
     })
   }
+  steps.push({
+    dot: 5,
+    title: 'Agradecimento a Nossa Senhora',
+    text: PRAYERS.agradecimentoRainha,
+  })
   steps.push({ dot: 5, title: 'Salve Rainha', text: PRAYERS.salveRainha })
   steps.push({
     dot: 0,

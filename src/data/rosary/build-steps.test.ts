@@ -7,16 +7,16 @@ import {
 import { getDotPos, layoutFor } from '@/data/rosary/geometry'
 
 describe('buildMarianSteps', () => {
-  it('produces 74 steps ending in a final step, with jaculatória included', () => {
+  it('produces 75 steps ending in a final step, with jaculatória included', () => {
     const steps = buildMarianSteps('gozosos', true)
-    expect(steps).toHaveLength(74)
+    expect(steps).toHaveLength(75)
     expect(steps[0].title).toBe('Sinal da Cruz')
     expect(steps.at(-1)?.type).toBe(StepType.Final)
   })
 
   it('drops 5 steps (one jaculatória per mystery) when disabled', () => {
     const steps = buildMarianSteps('gozosos', false)
-    expect(steps).toHaveLength(69)
+    expect(steps).toHaveLength(70)
   })
 })
 
