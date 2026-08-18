@@ -55,7 +55,7 @@ describe('TercoPage', () => {
 
   it('shows the completion card and records history after the last step', async () => {
     renderTercoPage()
-    const total = 74
+    const total = 75
     for (let i = 0; i < total - 1; i++) {
       // biome-ignore lint/nursery/noAwaitInLoop: sequential prayer steps must be clicked in order
       await userEvent.click(screen.getByRole('button', { name: 'Concluir →' }))
