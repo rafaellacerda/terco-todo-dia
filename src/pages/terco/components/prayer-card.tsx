@@ -1,5 +1,8 @@
+import { Pause, Play } from 'lucide-react'
+import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import type { TStep } from '@/data/rosary/build-steps'
+import { useSpeechSynthesis } from '@/pages/terco/use-speech-synthesis'
 
 type TPrayerCardProps = {
   step: TStep
@@ -14,17 +17,34 @@ export function PrayerCard({
   onBack,
   onComplete,
 }: TPrayerCardProps) {
+  const { isSupported, isSpeaking, speak, stop } = useSpeechSynthesis()
+
+  useEffect(() => stop, [step, stop])
+
   return (
     <div className="flex min-w-70 max-w-115 flex-1 basis-95 flex-col gap-4 rounded-2xl border border-border bg-card px-8 pt-8 pb-6.5 shadow-lg">
-      <div className="flex flex-col gap-1">
-        {step.subtitle && (
-          <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-gold-foreground/80">
-            {step.subtitle}
-          </span>
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex flex-col gap-1">
+          {step.subtitle && (
+            <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-gold-foreground/80">
+              {step.subtitle}
+            </span>
+          )}
+          <h3 className="font-heading text-[25px] font-semibold text-primary">
+            {step.title}
+          </h3>
+        </div>
+        {isSupported && (
+          <Button
+            variant="outline"
+            size="icon"
+            className="shrink-0 rounded-full"
+            aria-label={isSpeaking ? 'Parar leitura' : 'Ouvir oração'}
+            onClick={() => (isSpeaking ? stop() : speak(step.text))}
+          >
+            {isSpeaking ? <Pause /> : <Play />}
+          </Button>
         )}
-        <h3 className="font-heading text-[25px] font-semibold text-primary">
-          {step.title}
-        </h3>
       </div>
       <p className="whitespace-pre-line text-base leading-[1.8] text-foreground">
         {step.text}
